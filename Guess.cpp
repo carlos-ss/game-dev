@@ -13,7 +13,7 @@ void printHigherLower(string highLow, int numGuessed) {
         std::cout << "The number is "<< highLow <<" than " << numGuessed << std::endl << std::endl;
 }
 
-void printConclusion(bool isCorrect) {
+void printConclusion(bool isCorrect, int numToGuess) {
     if (isCorrect)
     {
         std::cout << "You have guessed the number correctly!";
@@ -98,14 +98,13 @@ int notmain() {
 
     // game start
     std::cout << "I'm thinking of a number between 1 and 100. Can you guess it?" << std::endl << std::endl;
-    std::cout << numToGuess;
 
     // user input 
     int numAttempts = numberOfAttempts();
     std::cout << "Starting game with " << numAttempts << " attempts" << std::endl;
 
 	// returns if the user has guessed the number and prints result
-    printConclusion(guessLoop(numAttempts, numToGuess));
+    printConclusion(guessLoop(numAttempts, numToGuess), numToGuess);
 
     std::cout << std::endl << std::endl << "Press ENTER to exit";
     std::cin.ignore();
