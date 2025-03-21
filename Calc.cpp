@@ -6,8 +6,9 @@
 using std::string;
 using std::stoi;
 
-string ERR_VALID_NUMBER_CALC = "Please enter a valid number.";
-string ERR_VALID_NUMBER_OPTION_CALC = "Please enter a valid number option.";
+// constant error message
+const string ERR_VALID_NUMBER_CALC = "Please enter a valid number.";
+const string ERR_VALID_NUMBER_OPTION_CALC = "Please enter a valid number option.";
 
 double userNumber(string errorMsg)
 {
@@ -22,12 +23,14 @@ double userNumber(string errorMsg)
         {
             if (!input.empty())
             {
+                // convert from string to double
                 numberInput = stod(input);
-                break;
+                isNotANumber = false;
             }
         }
         catch (const std::invalid_argument&)
         {
+            // handle error mesage 
             std::cout << errorMsg << std::endl;
 
         }
@@ -37,21 +40,25 @@ double userNumber(string errorMsg)
 }
 
 int calcMenu() {
+    // menu options 
     std::cout << "Please select an operation:"<< std::endl;
     std::cout << "1. Addition" << std::endl;
     std::cout << "2. Subtraction" << std::endl;
     std::cout << "3. Multiplication" << std::endl;
     std::cout << "4. Division" << std::endl;
 
+    // will return the number selected by the user
 	return userNumber(ERR_VALID_NUMBER_OPTION_CALC);
 }
 
 double add(double num1, double num2) {
 	return num1 + num2;
 }
+
 double subtract(double num1, double num2) {
     return num1 - num2;
 }
+
 double multiply(double num1, double num2) {
 	return num1 * num2;
 }
@@ -60,20 +67,12 @@ double divide(double num1, double num2) {
 	return num1 / num2;
 }
 
-// Main function
-int main() {
+void optionHandler(int option, double num1, double num2) {
 
-    while (true) {
-        int option = calcMenu();
+    // should not return a value just print the result
+	double result = 0;
 
-        double num1, num2, result = 0;
-        std::cout << "Enter first number: ";
-        num1 = userNumber(ERR_VALID_NUMBER_CALC);
-        std::cout << "Enter second number: ";
-        num2 = userNumber(ERR_VALID_NUMBER_CALC);
-
-
-        switch (option) {
+    switch (option) {
         case 1:
             result = add(num1, num2);
             break;
@@ -89,9 +88,23 @@ int main() {
         default:
             break;
 
-        }
+    }
+    std::cout << "Result: " << result << std::endl;
+}
 
-        std::cout << "Result: " << result << std::endl;
+// Main function
+int main() {
+
+    while (true) {
+        int option = calcMenu();
+
+        double num1, num2;
+        std::cout << "Enter first number: ";
+        num1 = userNumber(ERR_VALID_NUMBER_CALC);
+        std::cout << "Enter second number: ";
+        num2 = userNumber(ERR_VALID_NUMBER_CALC);
+
+		optionHandler(option, num1, num2);
 
 		std::cout << "Do you want to continue? (y/n): ";
 		std::string input;
