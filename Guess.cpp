@@ -6,6 +6,7 @@
 using std::string;
 using std::stoi;
 
+// constant error message
 string ERR_VALID_NUMBER = "Please enter a valid number.";
 string ERR_VALID_ATTEMPTS = "Please enter a valid number for the amount of attempts you want to try.";
 
@@ -14,6 +15,7 @@ void printHigherLower(string highLow, int numGuessed) {
 }
 
 void printConclusion(bool isCorrect, int numToGuess) {
+    
     if (isCorrect)
     {
         std::cout << "You have guessed the number correctly!";
@@ -38,13 +40,15 @@ int userNumber(string errorMsg)
         {
             if (!input.empty())
             {
+				// try to convert to int, exit out of loop if successful
 				numberInput = stoi(input);
-                break;
+                isNotANumber = false;
             }
 	
         }
         catch (const std::invalid_argument&)
         {
+            // show arg error message 
 			std::cout << errorMsg << std::endl;
 
         }
@@ -61,10 +65,12 @@ int numberOfAttempts()
 }
 
 bool guessLoop(int numAttempts, int numToGuess) {
+
     // intial vars
     int attempts = 0;
     bool isCorrect = false;
 
+    // cycle will last the amount of attempts
     while (attempts < numAttempts)
     {
         std::cout<<"Enter your guess: ";
@@ -73,11 +79,13 @@ bool guessLoop(int numAttempts, int numToGuess) {
 
         if (numGuessed == numToGuess)
         {
+			//exit the cycle if it is correct, set return value to true
             isCorrect = true;
             break;
         }
         else
         {
+			// let the user know if the number is higher or lower
 		    printHigherLower(numGuessed > numToGuess ? "lower" : "higher", numGuessed);
         }
 
