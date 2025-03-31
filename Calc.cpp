@@ -93,7 +93,7 @@ void optionHandler(int option, double num1, double num2) {
 }
 
 // Main function
-int main() {
+int notmainCalc() {
 
     while (true) {
         int option = calcMenu();
