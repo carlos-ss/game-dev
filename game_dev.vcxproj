@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Calc.cpp" />
+    <ClCompile Include="CoordsHomogenous.cpp" />
     <ClCompile Include="CreateShader.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Guess.cpp" />
