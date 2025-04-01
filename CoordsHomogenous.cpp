@@ -20,6 +20,7 @@ class Coords {
 		float color_r = 0.0f;
 		float color_g = 0.0f;
 		float color_b = 0.0f;
+		float angle = 0.0f;
 
 	public: 
 		Coords() {}
@@ -51,22 +52,25 @@ class Coords {
 
 	void draw() {
 		glPushMatrix();
-		glTranslatef(position_x, position_y, 0.0f);
+		glTranslatef(position_x, position_y, position_z);
+		glRotatef(angle, 0.0f, 0.0f, 1.0f);
+		glScalef(width, height, 1.0f);
 	
 		// set color
 		glColor3f(color_r, color_g, color_b);
 
 		// draw square
 		glBegin(GL_QUADS);
-			glVertex2d(-width / 2, -height / 2);
-			glVertex2d(width / 2, -height / 2);
-			glVertex2d(width / 2, height / 2);
-			glVertex2d(-width / 2, height / 2);
+			glVertex2f(-width / 2, -height / 2);
+			glVertex2f(width / 2, -height / 2);
+			glVertex2f(width / 2, height / 2);
+			glVertex2f(-width / 2, height / 2);
 		glEnd();
 		glPopMatrix();
 
 	}
-	void mover(float dx, float dy) {
+	void move(float dx, float dy) {
+
 		float x, y, z, w;
 		x = position_x;
 		y = position_y;
@@ -78,8 +82,23 @@ class Coords {
 		y += w * dy;
 
 		// Transtlate from homogenous to cartesian
-		position_x += x/w;
-		position_y += y/w;
+		position_x = x;
+		position_y = y;
+
+		// moves to infinity very quickly
+		/*position_x += x / w;
+		position_y += y / w;*/
+
+
+	}
+
+	void scale(float sx, float sy) {
+		width *= sx;
+		height *= sy;
+	}
+
+	void rotate(float angle) {
+		this->angle += angle;
 	}
 };
 
@@ -126,7 +145,14 @@ int main() {
 		obj1.draw();
 		obj2.draw();
 
+		obj1.move(0.001f, 0.001f );
+		obj2.move(-0.001f, -0.001f);
 
+		//obj1.scale(1.001f, 1.001f);
+		//obj2.scale(0.999f, 0.999f);
+
+		//obj1.rotate(1.0f);
+		//obj2.rotate(-1.0f);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
