@@ -7,7 +7,7 @@
 
 
 
-int main() {
+int createshadersmain() {
     // Initialize GLFW
     if (!glfwInit()) return -1;
 

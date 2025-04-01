@@ -139,7 +139,7 @@ void movePolygon(int shaderProgram) {
 	glUniform2f(mousePosLoc, posX, posY);
 }
 
-int notShadersmain() {
+int shadersmain() {
 	// Initialize GLFW
 	if (!glfwInit()) {
 		std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -163,9 +163,10 @@ int notShadersmain() {
 		std::cerr << "Failed to initialize GLEW" << std::endl;
 		return -1;
 	}
-	glfwSetCursorPosCallback(window, mouse_callback);
+	//glfwSetCursorPosCallback(window, mouse_callback);
 
-	int vertexShader = vertexMouseShaderSetUp();
+	//int vertexShader = vertexMouseShaderSetUp();
+	int vertexShader = vertexScalingShaderSetUp();
 	int fragmentShader = fragmenteShaderSetUp();
 
 	int shaderProgram = shaderProgramSetup(vertexShader, fragmentShader);
@@ -177,8 +178,8 @@ int notShadersmain() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		// Calculate scaling factor (pulse between 0.5 and 1.5)
 
-		//scalePolygon(shaderProgram);
-		movePolygon(shaderProgram);
+		scalePolygon(shaderProgram);
+		//movePolygon(shaderProgram);
 
 		// draw
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
