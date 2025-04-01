@@ -66,6 +66,21 @@ class Coords {
 		glPopMatrix();
 
 	}
+	void mover(float dx, float dy) {
+		float x, y, z, w;
+		x = position_x;
+		y = position_y;
+		z = position_z;
+		w = position_w;
+
+		// Coord transformation movement
+		x += w * dx;
+		y += w * dy;
+
+		// Transtlate from homogenous to cartesian
+		position_x += x/w;
+		position_y += y/w;
+	}
 };
 
 
