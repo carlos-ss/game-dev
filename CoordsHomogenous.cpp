@@ -13,6 +13,8 @@ class Coords {
 	private:
 		float position_x = 0.0f;
 		float position_y = 0.0f;
+		float position_z = 0.0f;
+		float position_w = 0.0f;
 		float width = 0.0f;
 		float height = 0.0f;
 		float color_r = 0.0f;
@@ -23,8 +25,17 @@ class Coords {
 		Coords() {}
 
 	void set_position(float x, float y) {
+
+		// make coords homogenous
 		position_x = x;
 		position_y = y;
+		position_z = 0.0f;
+		position_w = 1.0f;
+	}
+
+	void get_position(float* x, float* y) {
+		*x = position_x/position_w;
+		*y = position_y/position_w;
 	}
 
 	void set_size(float w, float h) {
@@ -42,8 +53,10 @@ class Coords {
 		glPushMatrix();
 		glTranslatef(position_x, position_y, 0.0f);
 	
+		// set color
 		glColor3f(color_r, color_g, color_b);
 
+		// draw square
 		glBegin(GL_QUADS);
 			glVertex2d(-width / 2, -height / 2);
 			glVertex2d(width / 2, -height / 2);
