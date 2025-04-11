@@ -21,7 +21,7 @@ void display() {
     glFlush();
 }
 
-int main(int argc, char** argv) {
+int glutmain(int argc, char** argv) {
 
     glutInit(&argc, argv);
     glutCreateWindow("Triangle");
