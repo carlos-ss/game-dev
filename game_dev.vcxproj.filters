@@ -39,5 +39,8 @@
     <ClCompile Include="CoordsHomogenous.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RotatingCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
