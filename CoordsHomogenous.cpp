@@ -103,7 +103,7 @@ class Coords {
 };
 
 
-int main() {
+int homogenousmain() {
 	// GLFW init
 	if (!glfwInit()) return -1;	
 
