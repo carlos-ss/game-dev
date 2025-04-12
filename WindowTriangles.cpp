@@ -1,7 +1,7 @@
 #include <freeglut/freeglut.h>
 
 
-void display() {
+void triangleDisplay() {
 
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_TRIANGLES);
@@ -25,7 +25,7 @@ int glutmain(int argc, char** argv) {
 
     glutInit(&argc, argv);
     glutCreateWindow("Triangle");
-    glutDisplayFunc(display);
+    glutDisplayFunc(triangleDisplay);
     glutMainLoop();
 
     return 0;

@@ -147,6 +147,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="Guess.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menus.cpp" />
     <ClCompile Include="RotatingCube.cpp" />
     <ClCompile Include="Shaders.cpp" />
     <ClCompile Include="Shapes.cpp" />
