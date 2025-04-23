@@ -61,7 +61,7 @@ void display() {
     glFlush();
 }
 
-int main(int argc, char** argv) {
+int menusmain(int argc, char** argv) {
     glutInit(&argc, argv);
 
     glutCreateWindow("Game");
