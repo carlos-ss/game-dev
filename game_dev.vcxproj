@@ -146,6 +146,7 @@
     <ClCompile Include="CreateShader.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Guess.cpp" />
+    <ClCompile Include="Illumination.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Primitive.cpp" />

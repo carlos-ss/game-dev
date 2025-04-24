@@ -14,7 +14,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
-int main(void) {
+int primitivemain(void) {
 
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;

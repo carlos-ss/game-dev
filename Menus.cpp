@@ -54,7 +54,7 @@ void mouse(int button, int state, int x, int y) {
     }
 }
 
-void display() {
+void otherdisplay() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     glEnd();
@@ -72,7 +72,7 @@ int menusmain(int argc, char** argv) {
     glutKeyboardFunc(keyboard);
     glutMouseFunc(mouse);
 
-    glutDisplayFunc(display);
+    glutDisplayFunc(otherdisplay);
 
     glutMainLoop();
     return 0;
